@@ -13,7 +13,7 @@ export const useForm = (initialState={}) => {//el use form recibe un obj
         setValues(
             {
                 ...values,
-                [target.name]:target.value.replace(/ /g,"") //para evitar espacios vacios
+                [target.name]:target.value.toLowerCase().replace(/ /g,"") //para evitar espacios vacios
             }
         )
     }

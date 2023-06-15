@@ -20,7 +20,6 @@ export const JuegoPalabra = () => {
     const [error, setError] = useState('')
     let wordApi=wordShow
 
-   
 
     useEffect(() => {
     
@@ -28,7 +27,7 @@ export const JuegoPalabra = () => {
         .then(resp=>{
             let wordLowerCase=resp.toLowerCase()
             let remAcenWord=removeAccents(wordLowerCase)
-            console.log(remAcenWord)
+            
             setWordShow(remAcenWord.toLowerCase())
             
         })
@@ -63,8 +62,7 @@ export const JuegoPalabra = () => {
 
     const handleClick=(e)=>{
         e.preventDefault()
-        console.log(wordApi)
-        console.log(word)
+        
         let msj=validateWord(word,wordApi)
 
         if(msj){
