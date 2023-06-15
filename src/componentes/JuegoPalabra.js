@@ -18,7 +18,7 @@ export const JuegoPalabra = () => {
     const [turn, setTurn] = useState(0)
     const [wordComplete, setWordComplete] = useState([])
     const [error, setError] = useState('')
-    const wordApi=wordShow
+    let wordApi=wordShow
 
    
 
@@ -26,9 +26,9 @@ export const JuegoPalabra = () => {
     
         obtPalabraFetch()
         .then(resp=>{
-           
-            let remAcenWord=removeAccents(resp)
-        
+            let wordLowerCase=resp.toLowerCase()
+            let remAcenWord=removeAccents(wordLowerCase)
+            console.log(remAcenWord)
             setWordShow(remAcenWord.toLowerCase())
             
         })
@@ -49,8 +49,8 @@ export const JuegoPalabra = () => {
 
         obtPalabraFetch()
         .then(resp=>{
-            
-            let remAcenWord=removeAccents(resp)
+            let wordLowerCase=resp.toLowerCase()
+            let remAcenWord=removeAccents(wordLowerCase)
         
             setWordShow(remAcenWord.toLowerCase())
             
@@ -63,7 +63,8 @@ export const JuegoPalabra = () => {
 
     const handleClick=(e)=>{
         e.preventDefault()
-
+        console.log(wordApi)
+        console.log(word)
         let msj=validateWord(word,wordApi)
 
         if(msj){
