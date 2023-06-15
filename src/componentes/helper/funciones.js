@@ -8,7 +8,7 @@ export const removeAccents = (str) => {
 
   export const validateWord=(word,wordApi='')=>{
     if(wordApi.length===5){
-      if(word.trim().length<5){
+      if(word.trim().length<5 || word.trim().length>5){
       return 'La palabra debe tener 5 caracteres'
     }else{
       let expReg=/^[A-Za-zñ\s]+$/g.test(word)

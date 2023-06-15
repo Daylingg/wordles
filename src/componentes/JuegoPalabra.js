@@ -75,7 +75,7 @@ export const JuegoPalabra = () => {
                 } })
         }else {
             
-            console.log(wordShow)
+            
             if(turn===6){
                 return Swal.fire({icon:'error',text:`Ya no quedan mas oportunidades`})
 
@@ -122,7 +122,6 @@ export const JuegoPalabra = () => {
                     <div className='form'>
                         <form>
                         <input className='inpWord'
-                            maxLength={5}
                             type='text'
                             name='word'
                             placeholder='escribir palabra'
