@@ -26,14 +26,14 @@ export const JuegoPalabra = () => {
     
         obtPalabraFetch()
         .then(resp=>{
-            
+           
             let remAcenWord=removeAccents(resp)
         
-            setWordShow(remAcenWord)
+            setWordShow(remAcenWord.toLowerCase())
             
         })
         .catch(err=>{ 
-            console.log(err)
+            
             setError(err.statusText||"Ocurrio un error inesperado. Revise la conexion")
         })
 
@@ -49,25 +49,22 @@ export const JuegoPalabra = () => {
 
         obtPalabraFetch()
         .then(resp=>{
-            console.log(resp)
-           
-                setWordShow(resp)
             
-            
+            let remAcenWord=removeAccents(resp)
+        
+            setWordShow(remAcenWord.toLowerCase())
             
         })
         .catch(err=>{ 
-            console.log(err)
+            
             setError(err.statusText||"Ocurrio un error inesperado. Revise la conexion")
         })
     }
-console.log(word)
+
     const handleClick=(e)=>{
         e.preventDefault()
 
         let msj=validateWord(word,wordApi)
-console.log(wordApi)
-console.log(msj)
 
         if(msj){
            
@@ -83,7 +80,7 @@ console.log(msj)
                 return Swal.fire({icon:'error',text:`Ya no quedan mas oportunidades`})
 
             }else
-            if(turn===5 && wordApi!==word){
+            if((wordApi.length===5 && turn===5 && wordApi!==word) || (wordApi.length===4 && turn===4 && wordApi!==word)){
                 setWordComplete([...wordComplete,word])
                 reset()
                 setTurn(turn+1)
