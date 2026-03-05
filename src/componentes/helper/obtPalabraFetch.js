@@ -1,18 +1,13 @@
-export const obtPalabraFetch = async() => {
+export const obtPalabraFetch = async () => {
+  try {
+    const resp = await fetch('https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es')
 
-    try {
-        const resp=await fetch('https://clientes.api.greenborn.com.ar/public-random-word?c=1&l=5')
-        
-        let data=await resp.json()
-        
-            const palabra=data[0]
-    
-            return palabra
-        
-    } catch (error) {
-        
-       throw new Error(error.statusText); 
-        
-    }
-    
+    let data = await resp.json()
+
+    const palabra = data[0]
+
+    return palabra
+  } catch (error) {
+    throw new Error(error.statusText)
+  }
 }
